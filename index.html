@@ -1,0 +1,191 @@
+<html>
+    <head>
+        <title>
+            Word Translator
+        </title>
+        </head>
+        <style>
+            .input-container{
+                height: 150px;
+            width: 600px; 
+            margin-left:460px;
+            border-radius: 25px;
+            font-size: 25px;
+            text-align: center;
+            background-color: #FAFFC5;
+            border: none;
+            color: #3A3960;
+            }
+            .slang_container{
+                height: 200px;
+                width: 700px;
+                background-color: #3A3960;
+                border: none;
+                border-radius: 25px;
+                margin-top: 60px;
+                margin-left: 400px;
+                padding: 20px 20px;
+                font-size: 25px;
+                text-align: center;
+                color: #FAFFC5;
+            }
+            .btn{
+                margin-left: 400px; 
+                margin-top: 60px; 
+                height: 50px;
+             width: 150px;
+             border-radius: 15px;
+             border: none;
+             background-color: #5E686D;
+            cursor: pointer;
+            font-size: 20px;
+            }
+            .btn:hover{
+            box-shadow: 0 0 10px 5px #3A3960;
+            }
+            .font-family{
+                font-family: 'Courier New', Courier, monospace;
+            }
+        </style>
+        <body style="background-color: #A9BFA8;">
+            <h1 style="text-align: center;color: #3A3960;text-decoration: overline;" class="font-family">
+                GenZ Slang Translator
+            </h1>
+
+            <input type="text" id="word" placeholder="Enter text (first letter capitalized)" class="input-container font-family">
+            <br>
+            <div style="display: flex;">
+           
+             <button  onclick="reset()" class="btn font-family">
+                Reset
+            </button>
+            <button  onclick="slang()" class="btn font-family">
+                Translate
+            </button>
+               </div>
+            <div id="slang" class="slang_container font-family">
+                
+            </div>
+            <script>
+                const genzToMean={
+
+                     Slay: `To excel, do something exceptionally well, or look incredibly good.`,
+Lit: `Exciting, fun, amazing.`,
+Bet: `An affirmation or agreement, like "okay," "sure," or "agreed."`,
+Cap:` "Cap" means to lie or exaggerate.`,
+Nocap:`"no lie," "for real"`,
+Tea: `Gossip or juicy information. "Spill the tea" means to share it.`,
+Vibe: `The overall atmosphere, feeling, or energy of a person, place, or situation.`,
+GOAT: `Acronym for "Greatest Of All Time."`,
+Flex: `To show off or brag about something.`,
+Sus: `Short for "suspicious" or "sketchy."`,
+Drip: `Refers to a person's stylish or fashionable clothing/accessories.`,
+Ghosted: `When someone abruptly stops communicating without explanation.`,
+Lowkey: `"Lowkey" means subtly, somewhat, secretly. "Highkey" means openly, definitely, very.`,
+Salty: `Feeling jealous, bitter, or mildly upset.`,
+Bussin: `Used to describe something that is really, really good or delicious (often food).`,
+Cheugy: `Describes something that is out of style, trying too hard to be trendy, or generally uncool.`,
+Simp: `Someone who does too much for a person they are romantically interested in, often excessively.`,
+"Glow up": `A significant positive transformation in someone's appearance or overall well-being.`,
+"Big Yikes": `An expression used when something is very embarrassing, awkward, or cringeworthy.`,
+"Hits different": `When something is unique, feels exceptionally good, or has a stronger impact than usual.`,
+Stan: `An extremely enthusiastic and dedicated fan (derived from "stalker" + "fan").`,
+"W / L": `"W" means "win" (success, good outcome). "L" means "loss" (failure, bad outcome).`,
+Rizz: `Short for "charisma." The ability to charm, flirt, or successfully interact with someone romantically.`,
+Aura:` A particular energy, vibe, or quality that someone or something exudes.`,
+Delulu: `Short for "delusional," often used to describe someone with unrealistic beliefs or fantasies.`,
+Ick: `A sudden feeling of disgust or repulsion for someone you were previously attracted to.`,
+"Main Character Energy": `Behaving as if you are the central figure or protagonist of a story, confidently.`,
+Periodt: `Used at the end of a statement to add ultimate emphasis, meaning "and that's final."`,
+Finna: `Short for "going to" or "about to."`,
+Fr: `Emphasizes truth or agreement.`,
+IYKYK: `Used for inside jokes or niche references.`,
+"Vibe Check":` A quick assessment of someone's mood or overall energy.`,
+"Catching Flights": `Prioritizing travel and experiences over emotional attachments.`,
+"Sending me": `Something is so funny or absurd it's making you laugh uncontrollably.`,
+"Understood the Assignment": `Someone did something perfectly or exactly as expected.`,
+"No notes": `Perfect, nothing to critique.`,
+"CEO of [something]": `Used to indicate someone is particularly good at or embodies a certain trait.`,
+Cringe: `Extremely awkward, embarrassing, or uncomfortable.`,
+FOMO: `"Fear Of Missing Out."`,
+JOMO: `"Joy Of Missing Out."`,
+Simping: `Acting overly affectionate or subservient to gain someone's attention (often romantically).`,
+Thirsty: `Desperate for attention or approval, especially romantically.`,
+"Rent free": `Something or someone that consistently occupies your thoughts.`,
+Bomb: `Excellent, really good (often for food or music).`,
+Gucci:` Good, cool, fine.`,
+Extra:` Overly dramatic, excessive, or attention-seeking.`,
+Snatched: `Looking extremely good, perfectly put together (often for appearance).`,
+Woke: `Aware of social justice issues and systemic inequalities.`,
+Bop: `A really good song.`,
+Slaps: `When a song is really good.`,
+"Cuffing Season": `The time of year (typically autumn/winter) when people look to get into relationships.`,
+Curve: `To reject someone romantically or dismiss their advances.`,
+Situationship: `A romantic relationship that is undefined and lacks commitment.`,
+Ghosting: `(Already listed, but reiterating as it's foundational) The act of suddenly ending communication with someone without explanation.`,
+Breadcrumbing: `Sending out small, inconsistent signals of interest to keep someone hooked without commitment.`,
+Gaslighting: `Manipulating someone by making them doubt their own sanity or perceptions.`,
+Capit: `Stop lying.`,
+"Straight Fire": `Excellent, very good, impressive (often for music, art, or performance).`,
+Dank: `Excellent, high quality (often for memes or marijuana, but has broadened).`,
+Boujee: `High-class, luxurious, or aspiring to be so (sometimes used humorously or ironically).`,
+Basic: `Unoriginal, mainstream, conforming to popular trends without individuality.`,
+Savage: `Extremely cool, fierce, or ruthless in a good way.`,
+Yeet: `An exclamation of excitement, approval, or to signify throwing something with force.`,
+Finesse: `To handle a situation or task skillfully and smoothly, often with a subtle trick.`,
+Crispy: `Clean, fresh, excellent.`,
+"Glow Down": `The opposite of a glow up; a negative transformation.`,
+"On mute": `Ignoring someone or something.`,
+"Catch the vibe": `To understand the mood or feeling of a situation.`,
+"Throwing shade": `Giving someone a subtle, indirect insult or disapproval.`,
+Deadass: `Seriously, genuinely, truly.`,
+Suspect: `Another way to say "sus."`,
+Mad: `Very, extremely (e.g., "That's mad expensive").`,
+Sheesh: `An exclamation of surprise, amazement, or exasperation.`,
+"Ratio'd": `On social media, when replies or comments to a post get significantly more likes than the original post itself, indicating disapproval.`,
+Doomscrolling: `Continuously scrolling through negative news or social media content.`,
+"Main Character Syndrome": `(Similar to main character energy) The tendency to view oneself as the central figure of every situation.`,
+"Go off": `Encouragement for someone to continue speaking, performing, or doing something impressive.`,
+"You ate": `You did an excellent job.`,
+"No printer":`No problem (a play on "no print" for "no proof").`,
+"Caught in 4K": `Caught red-handed, with undeniable evidence.`,
+"Living Rent-Free": `(Already listed, but a good one to emphasize) Something constantly occupying your mind.`,
+Valid: `Legitimate, reasonable, understandable.`,
+"It slaps": `(Already listed, but reiterating) The song is very good.`,
+Ghosting: `(Already listed, but fundamental) The act of disappearing from communication.`,
+"Gaslight": `An ironic or satirical phrase highlighting problematic aspects of certain feminist or self-improvement movements.`,
+"Pick Me": `Someone (often a woman) who seeks attention or approval by trying to seem different from or "not like other girls."`,
+Mid: `Mediocre, average, not very good.`,
+"Its giving vibe": `Expresses the specific feeling or aesthetic something evokes.`,
+Cringe: `(Already listed, but crucial) Describes something that evokes intense discomfort or embarrassment.`,
+Slayed: `(Past tense of slay) Did exceptionally well.`,
+Obsessed: `Extremely fond of or consumed by something.`,
+NPC:`"Non-Player Character" (from video games), used to describe someone who lacks individuality or critical thought.`,
+"Touch Grass": `An admonition to someone spending too much time online; get outside and experience reality.`,
+RageBait: `Content designed specifically to provoke anger or outrage to generate engagement.`,
+Deada: `Another spelling of "deadass." `
+                };
+                function slang(){
+                    const wordElement=document.getElementById("word");
+                    const slangElement=document.getElementById("slang");
+                    const word=wordElement.value;
+                    const slang=genzToMean[word];
+                    if (slang){
+                         slangElement.innerText=`${word} = ${slang}`;
+                         }
+                
+                         else{
+                          slangElement.innerText=`Slang not found for word ${word}  `;
+                    }
+                }   
+                function reset(){
+                    const wordElement=document.getElementById("word");
+                    const slangElement=document.getElementById("slang");
+                    const word=wordElement.value;
+                    const slang=genzToMean[word];
+                   
+                    slangElement.innerText=``;   
+                }
+                </script>
+        </body>
+</html>
